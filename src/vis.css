@@ -1,0 +1,225 @@
+:root {
+  --dep-color1: rgb(206, 179, 197, 0.3);
+  --dep-color2: rgb(207, 141, 185, 0.3);
+  /* para ancho en grid op-content-move-x */
+  /* --width-column1col: 114px;
+  --width-column2col: 114px;
+
+  --width-column1colMin: 55px;
+  --width-column1colMax: 160px; */
+  /* --width-column1colMin: 2%;
+  --width-column1colMax: 20%; */
+  /* --width-column2col: 100%; */
+
+
+  /* --width-box-2col: 14%;
+  --width-box-1col: 14%; */
+
+}
+
+/* ----------------------------------- */
+#miVisDep .vis-panel.vis-bottom {
+  background-color: var(--dep-color1);
+}
+
+#miVisDep .vis-panel {
+  cursor: pointer;
+}
+
+#miVisDep .vis-item,
+#miVisDep .vis-item a {
+  background-color: var(--dep-color1) !important;
+  color: var(--dep-color1) !important;
+  border-color: var(--dep-color1) !important;
+}
+
+#miVisDep .vis-item.vis-dot {
+  border-color: var(--dep-color2) !important;
+}
+
+#miVisDep .vis-item img {
+  width: 1px;
+  height: 1px;
+}
+
+/* #miVisDep */
+ .vis-group > .vis-item.vis-box {
+  border-color: green !important;
+}
+
+/* ----------------------------------- */
+.grid-lines {
+
+  /*   --s: 70px; control the size of the grid */
+  /*  --n: 6; - control the granularity */
+  /*  --t: 2px; the thickness */
+  /* --g: 10px; the gap between dashes */
+  /*  --c: #aeb8c2 25%, #0000 0; */
+
+  /* background: conic-gradient(at var(--g) var(--t), var(--c)) calc((var(--s)/var(--n) - var(--g) + var(--t))/2) 0/ calc(var(--s)/var(--n)) var(--s),
+    conic-gradient(from 180deg at var(--t) var(--g), var(--c)) 0 calc((var(--s)/var(--n) - var(--g) + var(--t))/2)/ var(--s) calc(var(--s)/var(--n)); */
+
+
+  --s: 70px;
+  --n: 6;
+  --t: 2px;
+  --g: 10px;
+  --c: #aeb8c2 25%, #0000 0;
+  background:
+    conic-gradient(at var(--g) var(--t), var(--c)) calc((var(--s)/var(--n) - var(--g) + var(--t))/2) 0/ calc(var(--s)/var(--n)) var(--s),
+    conic-gradient(from 180deg at var(--t) var(--g), var(--c)) 0 calc((var(--s)/var(--n) - var(--g) + var(--t))/2)/ var(--s) calc(var(--s)/var(--n));
+
+
+  /* --s: 145px;
+  --_g: #0000 90deg, rgb(99, 99, 99) 0;
+  background:
+    conic-gradient(from 90deg at 2px 2px, var(--_g)) 0 0/var(--s) var(--s),
+    conic-gradient(from 90deg at 1px 1px, var(--_g)) 0 0/calc(var(--s)/5) calc(var(--s)/5); */
+
+  /* ------------------ ES BUENO, peeero, en modo oscuro esconde texto */
+  /* --grid-size: 30px;
+  --grid-strength: 1px;
+  --grid-dash: 1px;
+  --grid-gap: 5px;
+  --grid-color: #ddd;
+  --paper-color: #812020;
+  background-color: transparent;
+  background-size: var(--grid-dash) var(--grid-dash), var(--grid-size) var(--grid-size);
+  background-image:
+    linear-gradient(to bottom, transparent var(--grid-gap), var(--paper-color) var(--grid-gap)),
+    linear-gradient(to right, var(--grid-color) var(--grid-strength), transparent var(--grid-strength)),
+    linear-gradient(to right, transparent var(--grid-gap), var(--paper-color) var(--grid-gap)),
+    linear-gradient(to bottom, var(--grid-color) var(--grid-strength), transparent var(--grid-strength)); */
+
+
+  /* background:
+    conic-gradient(from 90deg at 1px 1px,#0000 90deg,blue 0)
+    0 0/50px 50px; */
+
+  /* background: repeating-radial-gradient(circle,
+      #656668 ,
+      #656668 9px,
+      transparent 15%,
+      transparent 5%
+      ); */
+
+
+  /* background-image: repeating-linear-gradient(
+  #c4c1c5 0px,
+  #c4c1c5 5px,
+  transparent 5px,
+  transparent 20px
+); */
+
+
+}
+
+.vis-item img {
+  /* grande */
+  /* height: 155px;
+  width: 155px; */
+
+  /* mediana  */
+  /* height: 100px;
+  width: 100px; */
+
+  /* pequeña */
+  /* height: 60%;
+  width: 60%; */
+
+  height: 55px;
+  width: 55px;
+  /* border-radius: 8px; */
+  /* border-radius: 50%; */
+}
+
+.vis-item.vis-box {
+  border-radius: 12px !important;
+}
+
+
+.vis-item.vis-range div {
+  text-wrap: wrap;
+}
+
+/* ------------------------------------------ */
+.vis-item.opt-item-11 {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.vis-item.opt-item-12 {
+  background-color: transparent !important;
+}
+
+.vis-item.vis-box.opt-box-11 {
+  border-radius: 12px !important;
+  padding: 3px !important;
+  /* flex-direction: column-reverse, */
+  /* row | row-reverse | column | column-reverse; */
+}
+
+.vis-item.vis-background.negative {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.vis-item.vis-background.positive {
+  background-color: rgba(105, 255, 98, 0.2);
+}
+
+.vis-item.vis-background.marker {
+  border-left: 2px solid green;
+}
+
+/* ----------------------------------- */
+
+/* ====================================== */
+/* ====================================== */
+
+.vis-item.vis-box.opt-content-move-0 .vis-item-content,
+.vis-item.vis-box.opt-content-move-1 .vis-item-content {
+  display: grid;
+  /* grid-template-columns: minmax(32px, 100px); */
+  /* grid-template-columns: repeat(1, var(--width-column2col)); */
+  grid-template-rows: auto;
+  grid-template-areas: "vup" "vdown";
+  padding: 1px;
+}
+
+.vis-item.vis-box.opt-content-move-0 .vis-item-content div,
+.vis-item.vis-box.opt-content-move-1 .vis-item-content img {
+  grid-area: vup;
+  justify-self: center;
+}
+
+.vis-item.vis-box.opt-content-move-1 .vis-item-content div,
+.vis-item.vis-box.opt-content-move-0 .vis-item-content img {
+  grid-area: vdown;
+  justify-self: center;
+}
+
+/* ====================================== */
+.vis-item.vis-box.opt-content-move-2 .vis-item-content,
+.vis-item.vis-box.opt-content-move-3 .vis-item-content {
+  display: grid;
+  /* grid-template-columns: min-content(var(--width-column1colMin) var(--width-column1colMax)); */
+  /* grid-template-columns: min-content(55px 110px); */
+  grid-template-rows: auto;
+  grid-template-areas:
+    "vleft vright";
+}
+
+.vis-item.vis-box.opt-content-move-3 .vis-item-content div,
+.vis-item.vis-box.opt-content-move-2 .vis-item-content img {
+  grid-area: vright;
+  justify-self: start;
+}
+
+.vis-item.vis-box.opt-content-move-2 .vis-item-content div,
+.vis-item.vis-box.opt-content-move-3 .vis-item-content img {
+  grid-area: vleft;
+  justify-self: start;
+}
+
+
+/* ====================================== */
