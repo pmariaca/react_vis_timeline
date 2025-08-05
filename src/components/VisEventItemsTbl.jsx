@@ -2,10 +2,8 @@ import { useMemo, useState, useEffect } from 'react';
 import { useVisContext } from '../contexts/VisProvider';
 import { hGetItems } from '../helpers/functions'
 import SendDataToFileCsv from './SendDataToFileCsv';
-
 import { MaterialReactTable, useMaterialReactTable, } from 'material-react-table';
 import { Box, IconButton, Tooltip, Typography } from '@mui/material';
-
 import { GiPirateGrave } from "react-icons/gi";
 
 const VisEventItemsTbl = () => {
@@ -135,7 +133,6 @@ const VisEventItemsTbl = () => {
   });
 
   const getDataTimeline = () => {
-    console.log('------------------  .... getDataTimeline  -----------------------------')
     if (tlItemLength) {
       var datann = tlItem.get({ type: { start: 'ISODate', end: 'ISODate' } });
       setData(hGetItems(datann))

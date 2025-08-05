@@ -38,10 +38,9 @@ function SendDataToFileJs({ timelineItems }) {
     // mejor con string, ya que new Date(YYYY,MM,DD) recordar que suma un mes
     // a menos que se use new Date('YYYY-MM-DD') este ok, pero usaremos solo 'YYYY-MM-DD'
     // const jsonStr = generaConNewDate()
-    // const jsonStr = generaConDateString()
+    const jsonStr = generaConDateString()
 
-    // const jsonStr = generaConDateStringParaOtroTimeLine()
-    const jsonStr = generaConDateSumaDiasParaOtroTimeLine()
+    // const jsonStr = generaDateSumaDiasParaD3js()
 
     // console.log('jsonStr -- \n', jsonStr)
 
@@ -79,18 +78,7 @@ function SendDataToFileJs({ timelineItems }) {
     return arrDate.join(sep)
   }
 
-  //   {
-  //   content: 'Preclásico -2000ac, 100d.c',
-  //   start: -2500,
-  //   end: +100,
-  //   type: "range",
-  //   color: 'bn',
-  //   civilization: "Maya",
-  //   region: "Mesoamerica",
-  //   timeline: "Edad Antigua",
-  // },
-
-  function generaConDateSumaDiasParaOtroTimeLine() {
+  function generaDateSumaDiasParaD3js() {
     // sin imagen y sin DIV
     // y si no tiene end => end = start + 100
     // solo dejar el año, nada de dia y mes, por ahora
@@ -172,8 +160,8 @@ function SendDataToFileJs({ timelineItems }) {
     return jsonStr
   }
 
-  function fechaSumaDias(itemstart){
-    
+  function fechaSumaDias(itemstart) {
+
     let signo = 1
     const arrD = itemstart.split('-')
     if (arrD.length > 3) {
@@ -191,95 +179,6 @@ function SendDataToFileJs({ timelineItems }) {
       start = parseInt(start)
     }
     return start
-  }
-
-
-  function generaConDateStringParaOtroTimeLine() {
-    // sin imagen y sin DIV
-    // y si no tiene end => end = start + 100
-    // solo dejar el año, nada de dia y mes, por ahora
-    // DESPUES mejor total de dias, en lugar de años
-
-    // 1- prehistoria hasta aparicion de la escritura, 
-    // 2 - Edad Antigua, 3,500 a.c hasta el impero romano, siglo V ->  ANCIENT WORLD
-    // 3 - Edad Media (mediaval) siglo V (401 al 500) a s XV (1401 al 1500 ) -> MEDIAVAL WORLD
-    // 4 - Edad Moderna s.XV a XXI -> MODERN WORLD
-    // 5 - Edad Contemporanea sXXI
-    let dat = timelineItems.get()
-    let jsonStr = '';
-    const sumaEnd = 50
-
-    dat.map((item, index) => {
-      //  id: '76abe9ee-10b8-4562-9d65-62c2627a0c6d', 
-      // if (item.id != '03f95b3f-c2ea-4f11-b8a5-0a11ae00f99f') { return }
-      // if (index > 1) { return } // '2024-01-20'
-      // console.log('item.id', item.id)
-      // --------------------------------------
-      let content = item.content
-      content = content.replace("<div>", "")
-      content = content.replace("</div>", "")
-      content = content.replace("<br>", "")
-      //  content: 'Apogeo de Tulúm<img src="/img/maya/tulum.jpg" >', 
-      let arr = content.split("<img")
-      if (arr.length > 1) {
-        content = arr[0]
-      }
-      // --------------------------------------
-      let ddate = convDate(item.start, ',')
-      let arrS = ddate.split(',')
-      const start = parseInt(arrS[0])
-      // console.log('type of start', typeof start)
-      // --------------------------------------
-
-      const quieroId = true
-      if (quieroId) {
-        jsonStr += `{\n id: '${item.id}', \n content: '${content}', \n start: ${start}, \n`;
-      } else {
-        jsonStr += `{\n content: '${content}', \n start: ${start}, \n`;
-      }
-
-      if (item.end != undefined) {
-        ddate = convDate(item.end, ',')
-        arrS = ddate.split(',')
-        let end = parseInt(arrS[0])
-        jsonStr += ` end: ${end}, \n`;
-      } else {
-        const end = start + sumaEnd
-        jsonStr += ` end: ${end}, \n`;
-      }
-
-      if (item.className != undefined) {
-        jsonStr += ` className: "${item.className}", \n`;
-      }
-      if (item.type != undefined) {
-        jsonStr += ` type: "${item.type}", \n`;
-      }
-      if (item.style != undefined) {
-        jsonStr += ` style: "${item.style}", \n`;
-      }
-      // ----------------------
-      jsonStr += ` region: "Mesoamerica", \n`;
-      jsonStr += ` civilization: "Maya", \n`;
-      jsonStr += ` color: "bn", \n`;
-
-      const fecha = new Date(item.start)
-      let edad = ''
-      if (fecha < new Date('-003500-01-01')) {
-        edad = "Prehistoria"
-      } else if (fecha >= new Date('-003500-01-01') && fecha < new Date('+000401-01-01')) {
-        edad = "ANCIENT WORLD" // "Edad Antigua"
-      } else if (fecha >= new Date('+000401-01-01') && fecha < new Date('+001500-01-01')) {
-        edad = "MEDIAVAL WORLD" // "Edad Media"
-      } else if (fecha >= new Date('+001500-01-01') && fecha < new Date('2001-01-01')) {
-        edad = "MODERN WORLD" // "Edad Moderna"
-      } else if (fecha >= new Date('2001-01-01')) {
-        edad = "MODERN WORLD" //  "Edad Contemporánea"
-      }
-      jsonStr += ` timeline: "${edad}", \n`;
-      // ----------------------
-      jsonStr += `},\n`;
-    })
-    return jsonStr
   }
 
   function generaConDateString() {

@@ -17,8 +17,7 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
-const PreviewImage = ({ file, setFile, fileDataURL, setFileDataURL, iconVisible, setIconVisible, formaImg=0 }) => {
-
+const PreviewImage = ({ file, setFile, fileDataURL, setFileDataURL, iconVisible, setIconVisible, formaImg = 0 }) => {
 
   useEffect(() => {
     let fileReader, isCancel = false;
@@ -60,7 +59,6 @@ const PreviewImage = ({ file, setFile, fileDataURL, setFileDataURL, iconVisible,
     <Stack direction="column" spacing={1} sx={{ py: 0 }}>
       <Button
         sx={{ alignItems: "center", visibility: iconVisible == 'visible' ? 'collapse' : 'visible' }}
-        // sx={{justifyContent:"center", visibility: iconVisible == 'visible' ? 'collapse' : 'visible' }}
         variant="contained" component="label" startIcon={<ImageSearchOutlinedIcon />}>
         <VisuallyHiddenInput
           accept='.png, .jpg, .jpeg, .svg'
@@ -74,10 +72,7 @@ const PreviewImage = ({ file, setFile, fileDataURL, setFileDataURL, iconVisible,
       <Box direction='column' >
         {
           fileDataURL == '' ? '.' :
-            <Box
-            // sx={{ p: 2, border: '1px dashed grey', backgroundColor: grey[100] }}
-            // sx={{ p: 2,  backgroundColor: grey[200], borderRadius:`${formaImg}%` }}
-            >
+            <Box >
               <img src={fileDataURL} alt="." width='100px' height='100px' style={{ borderRadius: `${formaImg}%` }} />
             </Box>
         }

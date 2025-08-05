@@ -73,12 +73,12 @@ export default [
     end: "1915-02-02",
     type: "range",
   },
-  {
-    id: '5c15ceb9-7dfe-446e-bbe7-88ee6e672845',
-    content: '<div>hoy en dia</div>',
-    start: "2000-02-02",
-    type: "box",
-  },
+  // {
+  //   id: '5c15ceb9-7dfe-446e-bbe7-88ee6e672845',
+  //   content: '<div>hoy en dia</div>',
+  //   start: "2000-02-02",
+  //   type: "box",
+  // },
   {
     id: '9b17bc48-b48e-4814-942c-8697143c1a39',
     content: '<div>Influencia teotihuacana<br>en Tikal 378</div>',

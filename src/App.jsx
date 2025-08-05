@@ -11,6 +11,7 @@ import AppRoutes from './AppRoutes'
 import { BrowserRouter } from 'react-router-dom';
 import { Box, createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import { styled } from '@mui/material/styles';
+import './App.css'
 
 const drawerBleeding = 50
 
@@ -29,7 +30,7 @@ function App() {
       mode: mode,
     },
   });
-  const [open, setOpen] = useState(false);
+
   const [openB, setOpenB] = useState(false);
   const [openV, setOpenV] = useState(true);
 
@@ -39,7 +40,6 @@ function App() {
 
   const toggleDrawer = (newOpen) => () => {
     setOpenB(openB ? false : true);
-    // setOpenB(newOpen);
   };
 
   return (

@@ -1,13 +1,39 @@
 # react_vis_timeline
-# React + Vite
+El ejrcicio es manipular la libreria vis-timeline:
+- crear, editar, y borrar elementos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+ - https://github.com/visjs/vis-timeline
+
+
+
+
+- https://mui.com/material-ui/
+
+- PROBLEMA -> el @mui/x-date-pickers al editar fechas 0099 (2 ceros a la izq) lo
+cambia a 0199 y con fechas negativas otro tanto
+hay que buscar otro date-picker, a menos que me equivoque en la conf del picker, pero no tiene mucha ciencia
+
+
+- generar una linea de tiempo y guardar archivo js
+- guardar imagen de la linea de tiempo png
+- y csv
+
+
+ 
+
+ejemplo de incrustar video aqui
+
+Today, we’re announcing that the ability to upload video is generally available for everyone across GitHub. Now you can upload .mp4 and .mov files in issues, pull requests, discussions, and more.
+
+
+https://github.blog/news-insights/product-news/video-uploads-available-github/
+
+
+pero es en chrome
+https://vimeo.com/record/download
+
+

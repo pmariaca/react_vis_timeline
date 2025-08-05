@@ -1,17 +1,24 @@
-import React from 'react'
-import { useEffect, useMemo, useRef, useState, useCallback } from "react";
+import React, { useRef } from "react";
 import { useVisContext } from "../contexts/VisProvider";
 import moment from "moment";
 import dayjs from 'dayjs';
 import 'dayjs/locale/es'
-
 import "moment/dist/locale/es";
+
 import PropTypes from 'prop-types';
 import { Box, Button, ButtonGroup, Divider, IconButton, Paper, Stack, Typography } from "@mui/material";
 import { IoArrowForward } from "react-icons/io5";
 import { IoArrowBackSharp } from "react-icons/io5";
 import { TbArrowAutofitContent } from "react-icons/tb";
 import { GoZoomIn } from "react-icons/go";
+
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 function Item(props) {
   const { sx, ...other } = props;
@@ -104,10 +111,10 @@ export const VisTimeLineButtonDown = ({ optionData }) => {
 
   const getWindow1 = () => {
     const win1 = tlRef.current.getWindow()
-    console.log('win 1 ', win1)
+    // console.log('win 1 ', win1)
 
     const winDep = tlDepRef.current.getWindow()
-    console.log('winDep ', winDep)
+    // console.log('winDep ', winDep)
     // const visible = tlRef.current.getVisibleItems()
     // console.log(' fitData - range', visible)
 
@@ -134,25 +141,9 @@ export const VisTimeLineButtonDown = ({ optionData }) => {
 
   }
 
-  const redrawData = (e) => {
-    var datann = tlItem.get({ type: { start: 'ISODate', end: 'ISODate' } });
-    // console.log('datann', datann)
-    tlItem.clear()
-    tlItem.add(datann)
-  }
-
-  const clearData = (e) => {
-    tlItem.clear()
-  }
-
-
   return (
     <>
       <Box display="flex" justifyContent="flex-end" >
-        <Button variant="contained" size="small" onClick={clearData}>clean</Button>
-        <Divider orientation="vertical" flexItem />
-        <Button variant="contained" size="small" onClick={redrawData}>redraw</Button>
-        <Divider orientation="vertical" flexItem />
         <Button variant="contained" size="small" onClick={optionData}>initState</Button>
         <Divider orientation="vertical" flexItem />
         <Button variant="contained" size="small" onClick={getWindow1}>getWindow1</Button>
@@ -162,7 +153,16 @@ export const VisTimeLineButtonDown = ({ optionData }) => {
 }
 
 export const VisTimeLineButtonUp = ({ }) => {
-  const { tlRef, tlDepRef, tlItemRef, tlItem, tlZoomMin, tlValuesForm, tlItemLength } = useVisContext();
+  const { tlRef, tlItem } = useVisContext();
+  const [open, setOpen] = React.useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const zoomIn = (e) => { tlRef.current.focus(tlRef.current.getSelection()) }
   const zoomOut = (e) => { tlRef.current.fit() }
@@ -176,6 +176,17 @@ export const VisTimeLineButtonUp = ({ }) => {
       start: range.start.valueOf() - interval * percentage,
       end: range.end.valueOf() - interval * percentage
     });
+  }
+
+  const redrawData = (e) => {
+    var datann = tlItem.get({ type: { start: 'ISODate', end: 'ISODate' } });
+    tlItem.clear()
+    tlItem.add(datann)
+  }
+
+  const clearData = (e) => {
+    tlItem.clear()
+    setOpen(false);
   }
 
   return (
@@ -210,9 +221,31 @@ export const VisTimeLineButtonUp = ({ }) => {
               <TbArrowAutofitContent />
             </IconButton>
           </Item>
+          <Item>
+            <IconButton aria-label="redrawData" onClick={redrawData}  >
+              <Typography variant="button"> re-dibujar </Typography>
+            </IconButton>
+          </Item>
+          <Item>
+            <IconButton aria-label="clearData" onClick={handleClickOpen}  >
+              <Typography variant="button"> borrar todo </Typography>
+            </IconButton>
+          </Item>
           {/* ------------------- */}
 
         </Box>
+        <Dialog
+          fullScreen={fullScreen}
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="responsive-dialog-title"
+        >
+          <DialogTitle id="responsive-dialog-title"> Se borrara todo  </DialogTitle>
+          <DialogActions>
+            <Button autoFocus onClick={handleClose}> Cancelar </Button>
+            <Button onClick={clearData} autoFocus> Adelante </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     </>
   )

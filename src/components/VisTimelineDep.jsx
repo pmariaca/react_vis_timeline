@@ -19,16 +19,16 @@ function VisTimelineDep({ data, timelineRef, timelineDepRef }) {
   // the maximum range is ±8,640,000,000,000,000 milliseconds. Any attempt to 
   // create a date object outside this range will result in an "Invalid Date."
   // AQUI pondremos tope en: new Date(-271820, 1, 1) 0 
-  const miDat = [{
-    id: '186bd7d0-7ae8-461a-b211-28ecf61a7dbb',
-    content: '<div>Amalia Hajdudcek Bozek</div><img src="/img/fam/z_Amalia.png"/>',
-    // start: moment(new Date(-271820, 1, 1)).format(),
-    // start: new Date('-271820-04-13'),
-    // start: '-271820-04-13',
-    // start: new Date('-011820-04-13'),
-    start: '10042-04-13',
-    type: 'box',
-  },]
+  // const miDat = [{
+  //   id: '186bd7d0-7ae8-461a-b211-28ecf61a7dbb',
+  //   content: '<div>Amalia</div><img src="/img/fam/z_Amalia.png"/>',
+  //   // start: moment(new Date(-271820, 1, 1)).format(),
+  //   // start: new Date('-271820-04-13'),
+  //   // start: '-271820-04-13',
+  //   // start: new Date('-011820-04-13'),
+  //   start: '10042-04-13',
+  //   type: 'box',
+  // },]
 
   const timelineItems = useMemo(() => {
     // return new DataSet(miDat);
@@ -135,11 +135,7 @@ function VisTimelineDep({ data, timelineRef, timelineDepRef }) {
       onRemove: function (item, callback) {
         callback(item);
         setTlItemLength(timelineItems.length)
-        // -------------
-        // algo pasa con getItemRange,o hago 
         initialDrawDep()
-        // const range = timelineRef.current.getItemRange()
-        // timelineDepRef.current.setWindow(range.min, range.max, { animation: true })
       },
     };
   }, []);
@@ -158,13 +154,7 @@ function VisTimelineDep({ data, timelineRef, timelineDepRef }) {
       // moveable: false,
       onInitialDrawComplete: function () {
         initialDrawDep()
-        // const range = timelineDepRef.current.getItemRange()
-        // timelineDepRef.current.setWindow(range.min, range.max)
       },
-      // showMajorLabels: false,
-      //
-
-      // zoomMin: 26280000000
     };
   }, []);
 
@@ -197,13 +187,6 @@ function VisTimelineDep({ data, timelineRef, timelineDepRef }) {
     timelineRef.current.setSelection(ultimo.id, { animation: false })
     timelineRef.current.focus(timelineRef.current.getSelection(), { animation: false })
     timelineRef.current.setSelection([], { animation: false })
-
-    // timelineRef.current.on('changed', function (props) {
-    //   console.log('changed-------------------------')
-    // })
-    // timelineRef.current.on('currentTimeTick', function (props) {
-    //   console.log('currentTimeTick-------------------------', props)
-    // })
   }
 
   const initialDrawDep = () => {
@@ -220,26 +203,12 @@ function VisTimelineDep({ data, timelineRef, timelineDepRef }) {
         timelineRef.current.focus(timelineRef.current.getSelection(), { animation: true })
         timelineRef.current.setSelection([], { animation: false })
       }
-      // timelineRef.current.redraw()
-      // console.log('props.item', props?.item);
     })
-    // // ----------------------------
-    //     timelineDepRef.current.on('rangechange', function (props) {
-    //       // props.event.preventDefault();
-    //       console.log('----------------------props', props);
-    // 
-    //     })
-    // ----------------------------
-    // timelineDepRef.current.on('mouseOver', function (props) {
-    //   // props.event.preventDefault();
-    //   console.log('----------------------props', props);
-    // })
   }
 
   const optionData = () => {
     initialDraw()
     initialDrawDep()
-    // timelineRef.current.redraw()
   }
 
   return (

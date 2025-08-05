@@ -1,42 +1,30 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.pickerito {
+  /* border: 2px solid #007BFF; */
+  /* border-radius: 10px; */
+  font-size: 16px;
+  width: 100%;
+  transition: border-color 0.3s;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.pickerito-grp input[type=number] {
+  padding: 2px;
+  /* border: 2px solid #007BFF; */
+  /* border-radius: 10px;
+  font-size: 16px;
+  width: 100%;
+  transition: border-color 0.3s; */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pickerito-grp input[type=text] {
+  padding: 46x;
+  width: 70%;
+  /* border: 2px solid #007BFF; */
+  /* border-radius: 10px;
+  font-size: 16px;
+  width: 100%;
+  transition: border-color 0.3s; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.pickerito-grp .react-datepicker__month {
+  background-color: white;
 }

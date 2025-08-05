@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useVisContext } from '../contexts/VisProvider';
 import { hGetDate, hvaluesForm } from '../helpers/functions'
@@ -6,7 +6,6 @@ import VisDate from './VisDate';
 import PreviewImage from './PreviewImage';
 import { Box, Button, Divider, FormControlLabel, Grid, IconButton, Paper, Radio, RadioGroup, Stack, TextField } from '@mui/material'
 import TextareaAutosize from '@mui/material/TextareaAutosize';
-
 import { styled } from '@mui/material/styles';
 
 import SendIcon from '@mui/icons-material/Send';
@@ -110,25 +109,21 @@ const VisForm = ({ isEdit, idEvent = 0, valuesForm = hvaluesForm }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // The type of the item. 
-    // Can be 'box' (default), 'point', 'range', or 'background'. 
-    // Types 'box' and 'point' need a start date,  
-    // the types 'range' and 'background' needs both a start and end date. 
 
     const formData = new FormData(e.target);
     const { idItem, isEdit, content, date1, date2, myImg } = Object.fromEntries(formData);
     // console.log('---------idItem', idItem)
 
     if (isEdit && !idItem) { return }
-    console.log('================================ date1 ', date1)
+    // console.log('================================ date1 ', date1)
 
     const ddate1 = hGetDate(tlZoomMin, date1)
     var newItem = { 'start': ddate1 }
     const isRradio = rradio
     console.log('---------- idItem-1', idItem)
-    console.log('---------- isRradio -> ', isRradio, 'rradio', rradio)
+    // console.log('---------- isRradio -> ', isRradio, 'rradio', rradio)
     // ------------------------
-
+    // console.log('---------- date1 -> ', date1, 'date2', date2)
 
     if (isEdit == 'true') { newItem['id'] = idItem }
     if (isRradio == 'box' || isRradio == undefined) {
@@ -176,27 +171,23 @@ const VisForm = ({ isEdit, idEvent = 0, valuesForm = hvaluesForm }) => {
     // str = str.replace(RegExp(String.fromCharCode(10), 'g'), 'newChar');
     // newItem['content'] = divContent.replaceAll(RegExp(String.fromCharCode(10), 'g'),'<br>')
     newItem['content'] = divContent.replaceAll(/[\n\r]/g, '<br>')
-    console.log('------------------ newItem-1', newItem)
 
     if (isEdit == 'true') {
       tlItem.updateOnly(newItem)
-      tlRef.current.setSelection([], { animation: false })
-      initForm()
+      // tlRef.current.setSelection([], { animation: false })
+      // initForm()
     } else {
       tlItem.add(newItem)
     }
   }
 
   return (
-    <Box sx={{ p: 2, backgroundColor: 'pink' }} >
+    <Box sx={{ p: 2 }} >
       <form onSubmit={handleSubmit}>
         <input type='hidden' value={valuesForm.id} id='idItem' name='idItem' />
         {/* aqui fileDataURL no puede ser nulo !!! */}
         <input type='hidden' value={fileDataURL} name='myImg' />
         <input type='hidden' value={isEdit} name='isEdit' />
-
-        {/* <TextField variant="filled" label="--- BORRAME ---" value={contentDirection} />   <VisFormat />  */}
-        {/* ---------------------------------- */}
 
         <Grid size={12} >
           <Item>
@@ -209,8 +200,8 @@ const VisForm = ({ isEdit, idEvent = 0, valuesForm = hvaluesForm }) => {
             >
               <FormControlLabel value="box" control={<Radio />} label="Caja" />
               <FormControlLabel value="range" control={<Radio />} label="Rango" />
-              <FormControlLabel value="point" control={<Radio />} label="Punto" />
-              <FormControlLabel value="background" control={<Radio />} label="Fondo" />
+              {/* <FormControlLabel value="point" control={<Radio />} label="Punto" />
+              <FormControlLabel value="background" control={<Radio />} label="Fondo" /> */}
             </RadioGroup>
           </Item>
           {/* ---------------------------------- */}
@@ -221,7 +212,7 @@ const VisForm = ({ isEdit, idEvent = 0, valuesForm = hvaluesForm }) => {
                 ddate1={valuesForm.start}
                 ddate2={valuesForm.end}
                 numDate={dosDates}
-                ddirection={'row'}
+                ddirection={'column'}
               />
             </Box>
           </Item>
@@ -270,7 +261,6 @@ const VisForm = ({ isEdit, idEvent = 0, valuesForm = hvaluesForm }) => {
             > Add</Button>
           </Box>
         }
-
       </form>
     </Box >
   )

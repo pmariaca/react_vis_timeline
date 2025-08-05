@@ -43,7 +43,7 @@
 }
 
 /* #miVisDep */
- .vis-group > .vis-item.vis-box {
+.vis-group>.vis-item.vis-box {
   border-color: green !important;
 }
 
@@ -223,3 +223,4 @@
 
 
 /* ====================================== */
+

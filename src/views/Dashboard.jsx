@@ -1,35 +1,28 @@
 import React, { useRef } from 'react'
-// import data from '../data/data_rosa.js'
-import data from '../data/data_culturamaya.js'
-
-
-import '../vis.css'
-
-import { useVisContext } from '../contexts/VisProvider';
-// import VisTimeline from '../components/VisTimeline'
 import VisTimelineDep from '../components/VisTimelineDep.jsx'
-import AppSpeedDial from '../components/AppSpeedDial'
-import { Box, Divider } from '@mui/material';
+import '../vis.css'
+// import data from '../data/data_prueba.js';
+import data from '../data/data_culturamaya.js'
 
 const Dashboard = () => {
   const timelineRef = useRef(null);
   const timelineDepRef = useRef(null);
 
   return (
-    <div>
-      {/* <AppSpeedDial /> */}
-
-      {/* <Divider >.......................</Divider> */}
-
+    <>
+      <div>
         <VisTimelineDep
           data={data}
           timelineRef={timelineRef}
           timelineDepRef={timelineDepRef}
         />
-
-
-      
-    </div>
+      </div>
+      <ul>
+        <li> <a href="https://visjs.org/" target="_blank"> visjs.org/ </a> </li>
+        <li> <a href="https://visjs.github.io/vis-timeline/docs/timeline/" target="_blank"> docs</a> </li>
+        <li><a href="https://visjs.github.io/vis-timeline/examples/timeline/" target="_blank" rel="noopener noreferrer">ejemplos</a></li>
+      </ul >
+    </>
   )
 }
 

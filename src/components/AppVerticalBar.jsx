@@ -3,10 +3,8 @@ import { useVisContext } from '../contexts/VisProvider';
 import SendTimelineToImg from './SendTimelineToImg';
 import SendDataToFileJs from './SendDataToFileJs'
 import SendDataToFileCsv from './SendDataToFileCsv'
-
 import { styled, useTheme } from '@mui/material/styles';
 import { Box, Divider, Paper } from '@mui/material';
-
 import { GiSpiralArrow } from "react-icons/gi";
 
 const TopSpace = styled('div')(({ theme }) => ({
@@ -23,7 +21,7 @@ const AppVerticalBar = ({ openV }) => {
   const { tlItem, tlItemRef, tlValuesForm } = useVisContext();
   const theme = useTheme();
   // const verticalWidth = 360 : 30  460
-  const verticalWidth = openV ? 400 : 60
+  const verticalWidth = openV ? 260 : 60
 
   return (
     <>
@@ -55,6 +53,5 @@ const styles = {
     bgcolor: 'theme.palette.main',
   },
 }
-
 
 export default AppVerticalBar
