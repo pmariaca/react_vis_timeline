@@ -23,17 +23,8 @@ hay que buscar otro date-picker, a menos que me equivoque en la conf del picker,
 - y csv
 
 
- 
-
-ejemplo de incrustar video aqui
-
-Today, we’re announcing that the ability to upload video is generally available for everyone across GitHub. Now you can upload .mp4 and .mov files in issues, pull requests, discussions, and more.
+ <a href="https://github.com/pmariaca/react_vis_timeline/blob/main/zo_veo_react_vis_timeline.png" target="_blank">imagen</a>
 
 
-https://github.blog/news-insights/product-news/video-uploads-available-github/
-
-
-pero es en chrome
-https://vimeo.com/record/download
 
 
